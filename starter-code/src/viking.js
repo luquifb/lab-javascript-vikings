@@ -6,22 +6,33 @@ function Soldier (health, strength) {
     return this.strength;
   };
   this.receiveDamage = function(damage) {
-    this.strength -= 50;
+    this.health -= 50;
   };
 
 };
 
-soldier.attack(soldier.strength);
+
+Soldier.prototype.attack = function() {
+  return this.strength;
+}
+
+Soldier.prototype.receiveDamage = function(damage){
+  this.health -= damage
+}
 
 
 // Viking
-function Viking () {
-  Soldier.call(this, health, strength, attack, receiveDamage);
+function Viking (name, health, strength) {
+  Soldier.call(this, health, strength)
+  this.name = name
+  this.health = health
+  this.strength = strength
 };
 
+Viking.prototype = Object.create(Soldier.prototype);
 Viking.prototype.constructor = Soldier;
 
-viking.attack();
+
 
 
 // Saxon
