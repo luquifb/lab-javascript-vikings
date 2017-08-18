@@ -23,15 +23,26 @@ Soldier.prototype.receiveDamage = function(damage){
 
 // Viking
 function Viking (name, health, strength) {
-  Soldier.call(this, health, strength)
   this.name = name
-  this.health = health
-  this.strength = strength
+
+  Soldier.call(this, health, strength)
+
 };
 
 Viking.prototype = Object.create(Soldier.prototype);
 Viking.prototype.constructor = Soldier;
 
+Viking.prototype.attack = function(){
+  return this.strength
+}
+
+Viking.prototype.receiveDamage = function(damage){
+    this.health -= damage;
+
+//  if(this.health <= 0) {
+      return this.name + " has received " + damage + " points of damage"
+
+}
 
 
 
